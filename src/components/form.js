@@ -1,6 +1,13 @@
 import React from "react";
 
-const Form = ({ setInputText, todos, setTodos, inputText }) => {
+const Form = ({
+    setInputText,
+    todos,
+    setTodos,
+    inputText,
+    status,
+    setStatus,
+}) => {
     const inputTextHandler = (e) => {
         setInputText(e.target.value);
     };
@@ -24,6 +31,10 @@ const Form = ({ setInputText, todos, setTodos, inputText }) => {
         }
     };
 
+    const onChangeHandler = (e) => {
+        setStatus(e.target.value);
+    };
+
     return (
         <form>
             <input
@@ -40,7 +51,11 @@ const Form = ({ setInputText, todos, setTodos, inputText }) => {
                 <i className="fas fa-plus-square"></i>
             </button>
             <div className="select">
-                <select name="todos" className="filter-todo">
+                <select
+                    name="todos"
+                    className="filter-todo"
+                    onChange={onChangeHandler}
+                >
                     <option value="all">All</option>
                     <option value="completed">Completed</option>
                     <option value="uncompleted">Uncompleted</option>
